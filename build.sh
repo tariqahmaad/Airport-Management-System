@@ -7,7 +7,7 @@
 pip install -r requirements.txt
 
 # Run Django migrations
-python manage.py migrate
+python3.9 manage.py migrate
 
 # Collect static files
-python manage.py collectstatic --no-input
+python3.9 manage.py collectstatic --no-input
