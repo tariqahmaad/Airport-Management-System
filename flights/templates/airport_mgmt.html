@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Ticket Management System{% endblock %}
+{% block body %}
+
+
+
+<div class="jumbotron">
+	<div class="background-blur"></div>
+
+	<div class="content-wrapper">
+		<h2 class="display-3">Ticket Management System</h2>
+		<p class="lead">The Application interface has been integrated with various of operation to bring easier while
+			using
+			this application. we ensure security of information and management of tickets </p>
+		<hr class="my-4">
+		<p>This Appplication would be used by multiple users who would want to access to different data and
+			informations.
+			Those roles includes Passengers, Security personnel and flight staff. </p>
+
+
+		<button type="button" class="btn btn-outline-info">Security Personnel</button>
+		<div class="panel">
+			<br>
+			<p>They can easily verify the names and information of the passengers travelling across a series of flight
+				manifests.</p>
+			<p>They can clear passengers for their flight.</p>
+		</div>
+		<br>
+		<button type="button" class="btn btn-outline-info">Flight staff</button>
+		<div class="panel">
+			<br>
+			<p>They can access information about passengers travelling in their respective flights.</p>
+			<p>Before the flight, they generate a report of all checked in passengers who have cleared security. The
+				report
+				would contain details of number of passengers and their names.</p>
+		</div>
+		<br>
+		<button type="button" class="btn btn-outline-info">Passengers</button>
+		<div class="panel">
+			<br>
+			<p>They can use their unique PNR to access flight information and perform self check in.</p>
+			<p>They can also search and book flights.</p>
+		</div>
+		<br>
+	</div>
+
+</div>
+
+<div class="tile">
+	<h2>Total Flights: <span id="flightCount">{{ flight_count }}</span></h2>
+</div>
+
+
+<style>
+	
+
+	.jumbotron {
+		/* background-image: url('{% static "img/bg-pic1.jpg" %}'); */
+		background-size: cover;
+		background-position: center;
+		color: rgb(0, 0, 0);
+		text-align: center;
+		padding: 100px 40px;
+		margin-right: 20px;
+		box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.1);
+	}
+
+
+	.panel {
+		padding: 0 18px;
+		background-color: lightblue;
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.2s ease-out;
+	}
+
+	.tile {
+		width: 300px;
+		height: 200px;
+		background-color: #f5f5f5;
+		border-radius: 10px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+		transition: transform 0.3s ease;
+		border: skyblue solid 3px;
+	}
+
+	.tile:hover {
+		transform: scale(1.1);
+		background-color: skyblue;
+		transition: transform 0.3s ease;
+		color: white;
+	}
+</style>
+
+<script>
+	var acc = document.getElementsByClassName("btn btn-outline-info");
+	var i;
+
+	for (i = 0; i < acc.length; i++) {
+		acc[i].addEventListener("click", function () {
+			this.classList.toggle("active");
+			var panel = this.nextElementSibling;
+			if (panel.style.maxHeight) {
+				panel.style.maxHeight = null;
+			} else {
+				panel.style.maxHeight = panel.scrollHeight + "px";
+			}
+		});
+	}
+
+	window.onload = function () {
+		var count = document.getElementById('flightCount').innerText;
+		var currentCount = 0;
+		var interval = setInterval(function () {
+			if (currentCount >= count) {
+				clearInterval(interval);
+			} else {
+				currentCount++;
+				document.getElementById('flightCount').innerText = currentCount;
+			}
+		}, 70);
+	}
+</script>
+{% endblock %}
