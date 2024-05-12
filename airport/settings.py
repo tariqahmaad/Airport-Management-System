@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import pymysql
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,9 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "=-%8fxd$iruq!-p97mj_f)oa^(=!e5p!(_&r5$((mj^!o(hq+%"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["tariqahmad.pythonanywhere.com"]
 
 AUTH_USER_MODEL = "flights.User"
 
@@ -79,22 +80,22 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     # }
-    # "default": {
-    #     "ENGINE": "django.db.backends.mysql",
-    #     "NAME": "ticketdb",
-    #     "USER": "postgres",
-    #     "PASSWORD": "0000",
-    #     "HOST": "localhost",
-    #     "PORT": "5432",
-    # }
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "railway",
-        "USER": "root",
-        "PASSWORD": "NOuUTUhzlWVMdrgjpRqyYyDWgFIWraCs",
-        "HOST": "roundhouse.proxy.rlwy.net",
-        "PORT": "56376",
+        "NAME": "tariqahmad$airportdb",
+        "USER": "tariqahmad",
+        "PASSWORD": "Khankhan12345",
+        "HOST": "tariqahmad.mysql.pythonanywhere-services.com",
+        "PORT": "",
     }
+    # "default": {
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "NAME": "railway",
+    #     "USER": "root",
+    #     "PASSWORD": "NOuUTUhzlWVMdrgjpRqyYyDWgFIWraCs",
+    #     "HOST": "roundhouse.proxy.rlwy.net",
+    #     "PORT": "56376",
+    # }
 }
 
 # Password validation
