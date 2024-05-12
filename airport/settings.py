@@ -22,7 +22,9 @@ SECRET_KEY = "=-%8fxd$iruq!-p97mj_f)oa^(=!e5p!(_&r5$((mj^!o(hq+%"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".vercel.app", "localhost", ]
+ALLOWED_HOSTS = [
+    "vercel-project-bay.vercel.app",
+]
 
 AUTH_USER_MODEL = "flights.User"
 
