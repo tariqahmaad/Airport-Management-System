@@ -25,7 +25,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     ".vercel.app",
-    "127.0.0.1",
 ]
 
 AUTH_USER_MODEL = "flights.User"
@@ -82,13 +81,21 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     # }
+    # "default": {
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "NAME": "ticketdb",
+    #     "USER": "postgres",
+    #     "PASSWORD": "0000",
+    #     "HOST": "localhost",
+    #     "PORT": "5432",
+    # }
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "ticketdb",
-        "USER": "postgres",
-        "PASSWORD": "0000",
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "airportdb",
+        "USER": "airportuser",
+        "PASSWORD": "Password@0",
         "HOST": "localhost",
-        "PORT": "5432",
+        "PORT": "",
     }
 }
 
