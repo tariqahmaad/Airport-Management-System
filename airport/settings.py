@@ -84,23 +84,23 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     # }
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "airportdb",
-        "USER": "airportuser",
-        "PASSWORD": "Password@0",
-        "HOST": "localhost",
-        "PORT": "",
-    }
-    # Internal database
     # "default": {
     #     "ENGINE": "django.db.backends.mysql",
-    #     "NAME": "tariqahmad$airportdb",
-    #     "USER": "tariqahmad",
-    #     "PASSWORD": "Khankhan12345",
-    #     "HOST": "tariqahmad.mysql.pythonanywhere-services.com",
+    #     "NAME": "airportdb",
+    #     "USER": "airportuser",
+    #     "PASSWORD": "Password@0",
+    #     "HOST": "localhost",
     #     "PORT": "",
     # }
+    # Internal database
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "tariqahmad$airportdb",
+        "USER": "tariqahmad",
+        "PASSWORD": "Khankhan12345",
+        "HOST": "tariqahmad.mysql.pythonanywhere-services.com",
+        "PORT": "",
+    }
     # External database
     # "default": {
     #     "ENGINE": "django.db.backends.mysql",
