@@ -73,8 +73,19 @@ def login_staff(request):
     return render(request, "staff_login.html")
 
 
+# def home(request):
+#     return render(request, "home.html")
+
+
 def home(request):
-    return render(request, "home.html")
+    # Fetch distinct source and destination from the database
+    sources = Flight.objects.values_list("source", flat=True).distinct()
+    destinations = Flight.objects.values_list("destination", flat=True).distinct()
+
+    # Pass the sources and destinations to the template
+    return render(
+        request, "home.html", {"sources": sources, "destinations": destinations}
+    )
 
 
 def airport_mgmt(request):
@@ -152,22 +163,34 @@ def search_by_destination(request):
         return redirect("view_flights")
 
 
+# def view_available_flights(request):
+#     if request.method == "POST":
+#         source = request.POST["source"]
+#         destination = request.POST["destination"]
+#         if source and destination:
+#             flights = Flight.objects.filter(source=source, destination=destination)
+#             if flights:
+#                 return render(request, "home.html", {"flights": flights})
+#             else:
+#                 return render(
+#                     request, "home.html", {"error_message_flight": "No flights found"}
+#                 )
+#         else:
+#             return redirect("home")
+#     else:
+#         return redirect("home")
+
+
 def view_available_flights(request):
     if request.method == "POST":
-        source = request.POST["source"]
-        destination = request.POST["destination"]
-        if source and destination:
-            flights = Flight.objects.filter(source=source, destination=destination)
-            if flights:
-                return render(request, "home.html", {"flights": flights})
-            else:
-                return render(
-                    request, "home.html", {"error_message_flight": "No flights found"}
-                )
-        else:
-            return redirect("home")
-    else:
-        return redirect("home")
+        source = request.POST.get("source")
+        destination = request.POST.get("destination")
+
+        # Fetch flights that match the selected source and destination
+        flights = Flight.objects.filter(source=source, destination=destination)
+
+        # Pass the flights to the template
+        return render(request, "view_flights.html", {"flights": flights})
 
 
 def book_flight(request, pk):

@@ -48,3 +48,5 @@ class Staff(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, default=1)
     id = models.IntegerField(primary_key=True)
     flight_no = models.ForeignKey(Flight, on_delete=models.CASCADE, default=1007)
+
+

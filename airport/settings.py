@@ -24,7 +24,10 @@ SECRET_KEY = "=-%8fxd$iruq!-p97mj_f)oa^(=!e5p!(_&r5$((mj^!o(hq+%"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["tariqahmad.pythonanywhere.com"]
+ALLOWED_HOSTS = [
+    "tariqahmad.pythonanywhere.com",
+    "127.0.0.1",
+]
 
 AUTH_USER_MODEL = "flights.User"
 
@@ -81,15 +84,23 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     # }
-    # Internal database
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "tariqahmad$airportdb",
-        "USER": "tariqahmad",
-        "PASSWORD": "Khankhan12345",
-        "HOST": "tariqahmad.mysql.pythonanywhere-services.com",
+        "NAME": "airportdb",
+        "USER": "airportuser",
+        "PASSWORD": "Password@0",
+        "HOST": "localhost",
         "PORT": "",
     }
+    # Internal database
+    # "default": {
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "NAME": "tariqahmad$airportdb",
+    #     "USER": "tariqahmad",
+    #     "PASSWORD": "Khankhan12345",
+    #     "HOST": "tariqahmad.mysql.pythonanywhere-services.com",
+    #     "PORT": "",
+    # }
     # External database
     # "default": {
     #     "ENGINE": "django.db.backends.mysql",
@@ -99,7 +110,6 @@ DATABASES = {
     #     "HOST": "roundhouse.proxy.rlwy.net",
     #     "PORT": "56376",
     # }
-
 }
 
 # Password validation
