@@ -96,8 +96,11 @@ DATABASES = {
     #     "HOST": "roundhouse.proxy.rlwy.net",
     #     "PORT": "56376",
     # }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 5aece5775345e186b1ac279667c31c83dbc371c3
 }
 
 # Password validation
