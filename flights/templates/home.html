@@ -3,24 +3,116 @@
 {% block body %}
 
 
-<form class="form-inline my-2 my-lg-0" method="post" action="{% url 'view_available_flights'%}" role="form">
-    {% csrf_token %}
-    <div class="form-group">
-        <select class="form-control mr-sm-2" id="source-select" name="source">
-            <option value="">-- Select Source --</option>
-            {% for source in sources %}
-                <option value="{{ source }}">{{ source }}</option>
-            {% endfor %}
-        </select>
-        <select class="form-control mr-sm-2" id="destination-select" name="destination">
-            <option value="">-- Select Destination --</option>
-            {% for destination in destinations %}
-                <option value="{{ destination }}">{{ destination }}</option>
-            {% endfor %}
-        </select>
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit" style="margin-right:10px;">View All Available Flights</button>
+{% comment %} <div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card">
+                <div class="card-body">
+                    <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'view_available_flights' %}" role="form">
+                        {% csrf_token %}
+                        <div class="form-group w-100">
+                            <div class="row w-100">
+                                <div class="col-6">
+                                    <select class="form-control w-100" id="source-select" name="source">
+                                        <option value="">-- Select Source --</option>
+                                        {% for source in sources %}
+                                            <option value="{{ source }}">{{ source }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <select class="form-control w-100" id="destination-select" name="destination">
+                                        <option value="">-- Select Destination --</option>
+                                        {% for destination in destinations %}
+                                            <option value="{{ destination }}">{{ destination }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row w-75 mt-2">
+                                <div class="col-12">
+                                    <button class="btn btn-outline-primary w-100" type="submit">View All Available Flights</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <br>
+                    <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'view_booking' %}" role="form">
+                        {% csrf_token %}
+                        <div class="form-group w-100">
+                            <div class="row w-100">
+                                <div class="col-8">
+                                    <input class="form-control w-100" placeholder="Enter PNR" name="pnr" type="text">
+                                </div>
+                                <div class="col-4">
+                                    <button class="btn btn-primary w-100" type="submit">View My Booking</button>
+                                </div>
+                            </div>
+                        </div>
+                        {% if error_message_booking %}<p><strong>{{ error_message_booking }}</strong></p>{% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</form>
+</div> {% endcomment %}
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card">
+                <div class="card-body">
+                    <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'view_available_flights' %}" role="form">
+                        {% csrf_token %}
+                        <div class="form-group w-100">
+                            <div class="row w-100">
+                                <div class="col-6">
+                                    <select class="form-control w-100" id="source-select" name="source">
+                                        <option value="">-- Select Source --</option>
+                                        {% for source in sources %}
+                                            <option value="{{ source }}">{{ source }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <select class="form-control w-100" id="destination-select" name="destination">
+                                        <option value="">-- Select Destination --</option>
+                                        {% for destination in destinations %}
+                                            <option value="{{ destination }}">{{ destination }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row w-100 mt-2 justify-content-center">
+                                <div class="col-8">
+                                    <button class="btn btn-outline-primary w-100" type="submit">View All Available Flights</button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <br>
+                    <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'view_booking' %}" role="form">
+                        {% csrf_token %}
+                        <div class="form-group w-100">
+                            <div class="row w-100">
+                                <div class="col-8">
+                                    <input class="form-control w-100" placeholder="Enter PNR" name="pnr" type="text">
+                                </div>
+                                <div class="col-4">
+                                    <button class="btn btn-primary w-100" type="submit">View My Booking</button>
+                                </div>
+                            </div>
+                        </div>
+                        {% if error_message_booking %}<p><strong>{{ error_message_booking }}</strong></p>{% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 {% if error_message_flight %}
     <p><strong>{{ error_message_flight }}</strong></p>
@@ -64,13 +156,9 @@
     </tbody>
 </table>
 {% endif %}
-<br>
-<form class="form-inline my-2 my-lg-0" method="post" action="{% url 'view_booking' %}" role="form">
-    {% csrf_token %}
-    <input class="form-control mr-sm-2" placeholder="Enter PNR" name="pnr" type="text">
-    <button class="btn btn-secondary my-2 my-sm-0" type="submit" style="margin-right:10px;">View My Booking</button>
-    {% if error_message_booking %}<p><strong>{{ error_message_booking }}</strong></p>{% endif %}
-</form>
+
+
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {

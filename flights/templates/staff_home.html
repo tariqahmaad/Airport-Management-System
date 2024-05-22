@@ -36,7 +36,7 @@
     {% endfor %}
   </tbody>
 </table>
-<a href="{% url 'generate_report' flight_no %}" class="btn btn-outline-success" role="button">Generate Flight Report</a>
+{% comment %} <a href="{% url 'generate_report' flight_no %}" class="btn btn-outline-success" role="button">Generate Flight Report</a> {% endcomment %}
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">CLEAR FLIGHT FOR TAKE OFF</button>
 

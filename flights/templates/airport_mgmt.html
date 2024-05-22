@@ -19,7 +19,7 @@
 			Those roles includes Passengers, Security personnel and flight staff. </p>
 
 
-		<button type="button" class="btn btn-outline-info">Security Personnel</button>
+		<button type="button" class="btn btn-outline-dark">Security Personnel</button>
 		<div class="panel">
 			<br>
 			<p>They can easily verify the names and information of the passengers travelling across a series of flight
@@ -27,7 +27,7 @@
 			<p>They can clear passengers for their flight.</p>
 		</div>
 		<br>
-		<button type="button" class="btn btn-outline-info">Flight staff</button>
+		<button type="button" class="btn btn-outline-dark">Flight staff</button>
 		<div class="panel">
 			<br>
 			<p>They can access information about passengers travelling in their respective flights.</p>
@@ -36,7 +36,7 @@
 				would contain details of number of passengers and their names.</p>
 		</div>
 		<br>
-		<button type="button" class="btn btn-outline-info">Passengers</button>
+		<button type="button" class="btn btn-outline-dark">Passengers</button>
 		<div class="panel">
 			<br>
 			<p>They can use their unique PNR to access flight information and perform self check in.</p>
@@ -53,8 +53,6 @@
 
 
 <style>
-
-
 	.jumbotron {
 		/* background-image: url('{% static "img/bg-pic1.jpg" %}'); */
 		background-size: cover;
@@ -64,6 +62,11 @@
 		padding: 100px 40px;
 		margin-right: 20px;
 		box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.1);
+
+		/* gradient color in the backgound of a panel */
+		background-color: #D9AFD9;
+		background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+
 	}
 
 
@@ -97,7 +100,7 @@
 </style>
 
 <script>
-	var acc = document.getElementsByClassName("btn btn-outline-info");
+	var acc = document.getElementsByClassName("btn btn-outline-dark");
 	var i;
 
 	for (i = 0; i < acc.length; i++) {
@@ -125,4 +128,6 @@
 		}, 70);
 	}
 </script>
+
+
 {% endblock %}

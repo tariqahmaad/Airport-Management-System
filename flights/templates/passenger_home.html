@@ -18,10 +18,10 @@
     {% if passenger.checked_in_status == False %}
       <a href="{% url 'self_check_in' passenger.pk %}" class="btn btn-outline-success" role="button">Perform Self Check-In</a>
     {% else %}
-      <a href="#" class="btn btn-outline-success disabled" role="button">Checked In</a>
+      <a href="#" class="btn btn-outline-success disabled w-100" role="button">Checked In</a>
     {% endif %}
 
-    <a href="{% url 'create_pdf' passenger.pk %}" class="btn btn-outline-success" role="button">Download Ticket</a>
+    {% comment %} <a href="{% url 'create_pdf' passenger.pk %}" class="btn btn-outline-success" role="button">Download Ticket</a> {% endcomment %}
   </div>
 </div>
 </div>
