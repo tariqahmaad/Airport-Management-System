@@ -2,78 +2,97 @@
 {% block title %}Home{% endblock %}
 {% block body %}
 
-{% comment %} <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'view_available_flights'%}" role="form">
-{% csrf_token %}
-    <div class="form-group">
-    <input class="form-control mr-sm-2" placeholder="Source" name="source" type="text">
-    <input class="form-control mr-sm-2" placeholder="Destination" name="destination" type="text">
-    <button class="btn btn-secondary my-2 my-sm-0" type="submit" style="margin-right:10px;">View All Available Flights</button>
-    </div>
-</form> {% endcomment %}
 
 <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'view_available_flights'%}" role="form">
-{% csrf_token %}
+    {% csrf_token %}
     <div class="form-group">
-    <select class="form-control mr-sm-2" name="source">
-        <option value="">-- Select Source --</option>
-        {% for source in sources %}
-          <option value="{{ source }}">{{ source }}</option>
-        {% endfor %}
-    </select>
-    <select class="form-control mr-sm-2" name="destination">
-        <option value="">-- Select Destination --</option>
-        {% for destination in destinations %}
-          <option value="{{ destination }}">{{ destination }}</option>
-        {% endfor %}
-    </select>
-    <button class="btn btn-secondary my-2 my-sm-0" type="submit" style="margin-right:10px;">View All Available Flights</button>
+        <select class="form-control mr-sm-2" id="source-select" name="source">
+            <option value="">-- Select Source --</option>
+            {% for source in sources %}
+                <option value="{{ source }}">{{ source }}</option>
+            {% endfor %}
+        </select>
+        <select class="form-control mr-sm-2" id="destination-select" name="destination">
+            <option value="">-- Select Destination --</option>
+            {% for destination in destinations %}
+                <option value="{{ destination }}">{{ destination }}</option>
+            {% endfor %}
+        </select>
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit" style="margin-right:10px;">View All Available Flights</button>
     </div>
 </form>
 
-    {% if error_message_flight %}
-        <p><strong>{{ error_message_flight }}</strong></p>
-    {% endif %}
-    {% if flights %}
-    <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Flight No.</th>
-      <th scope="col">Airline</th>
-      <th scope="col">No. of seats</th>
-      <th scope="col">Source</th>
-      <th scope="col">Destination</th>
-      <th scope="col">Departure Time</th>
-      <th scope="col">Arrival Time</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for flight in flights %}
+{% if error_message_flight %}
+    <p><strong>{{ error_message_flight }}</strong></p>
+{% endif %}
+{% if flights %}
+<table class="table table-hover">
+    <thead>
         <tr>
-          <td>{{flight.flight_no}}</td>
-          <td>{{flight.airline_name}}</td>
-          <td>{{ flight.no_of_seats }}</td>
-          <td>{{ flight.source}}</td>
-          <td>{{ flight.destination}}</td>
-          <td>{{ flight.departure_time}}</td>
-          <td>{{ flight.arrival_time}}</td>
-          <td>
-            {% if flight.no_of_seats > 0 %}
-                <a href="{% url 'book_flight' flight.pk%}" class="btn btn-outline-success" role="button">Book Now!</a>
-            {% else %}
-                <button type="button" class="btn btn-success disabled">Book Now!</button>
-            {% endif %}
-          </td>
+            <th scope="col">Flight No.</th>
+            <th scope="col">Airline</th>
+            <th scope="col">No. of seats</th>
+            <th scope="col">Source</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Departure Time</th>
+            <th scope="col">Arrival Time</th>
         </tr>
-    {% endfor %}
-  </tbody>
+    </thead>
+    <tbody>
+        {% for flight in flights %}
+        <tr>
+            <td>{{ flight.flight_no }}</td>
+            <td>{{ flight.airline_name }}</td>
+            <td>{{ flight.no_of_seats }}</td>
+            <td>{{ flight.source }}</td>
+            <td>{{ flight.destination }}</td>
+            <td>{{ flight.departure_time }}</td>
+            <td>{{ flight.arrival_time }}</td>
+            <td>
+                {% if flight.no_of_seats > 0 %}
+                <a href="{% url 'book_flight' flight.pk %}" class="btn btn-outline-success" role="button">Book Now!</a>
+                {% else %}
+                <button type="button" class="btn btn-success disabled">Book Now!</button>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7">No flights available</td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
-
 {% endif %}
 <br>
 <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'view_booking' %}" role="form">
-  {% csrf_token %}
-  <input class="form-control mr-sm-2" placeholder="Enter PNR" name="pnr" type="text">
-  <button class="btn btn-secondary my-2 my-sm-0" type="submit" style="margin-right:10px;">View My Booking</button>
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" placeholder="Enter PNR" name="pnr" type="text">
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit" style="margin-right:10px;">View My Booking</button>
     {% if error_message_booking %}<p><strong>{{ error_message_booking }}</strong></p>{% endif %}
 </form>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const sourceSelect = document.getElementById('source-select');
+    const destinationSelect = document.getElementById('destination-select');
+    
+    sourceSelect.addEventListener('change', function() {
+        const selectedSource = sourceSelect.value;
+
+        // Enable all options first
+        for (const option of destinationSelect.options) {
+            option.disabled = false;
+        }
+
+        // Disable the option that matches the selected source
+        if (selectedSource) {
+            const toOption = destinationSelect.querySelector(`option[value="${selectedSource}"]`);
+            if (toOption) {
+                toOption.disabled = true;
+            }
+        }
+    });
+});
+</script>
 {% endblock %}
