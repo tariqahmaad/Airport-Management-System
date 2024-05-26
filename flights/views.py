@@ -195,9 +195,41 @@ def view_available_flights(request):
 
 def book_flight(request, pk):
     if request.method == "POST":
-        flight = Flight.objects.get(flight_no=pk)
         first_name = request.POST["first_name"]
         last_name = request.POST["last_name"]
+        nationality = request.POST["nationality"]
+        gender = request.POST["gender"]
+        dob = request.POST["dob"]
+
+        if not first_name:
+            return render(
+                request,
+                "book_flight.html",
+                {
+                    "flight_no": pk,
+                    "error_message": "First name are required.",
+                },
+            )
+        if not last_name:
+            return render(
+                request,
+                "book_flight.html",
+                {"flight_no": pk, "error_message": "Last name is required."},
+            )
+        if not nationality:
+            return render(
+                request,
+                "book_flight.html",
+                {"flight_no": pk, "error_message": "Nationality is required."},
+            )
+        if not dob:
+            return render(
+                request,
+                "book_flight.html",
+                {"flight_no": pk, "error_message": "Date of birth is required."},
+            )
+
+        flight = Flight.objects.get(flight_no=pk)
         nationality = request.POST["nationality"]
         gender = request.POST["gender"]
         dob = request.POST["dob"]
