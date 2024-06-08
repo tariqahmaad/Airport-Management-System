@@ -10,9 +10,10 @@ Airport Management System is a web application developed for the purpose of keep
 
 ## Team Members
 
-- **Tariq Ahmad** (B2105.010052)
-- **Daniah Ayad Tareq Al-Sultani** (B2205.010035)
-- **Mohammad Rauf** (B2105.010002)
+- **Tariq Ahmad** - *Development* - [Tariq](https://github.com/tariqahmaad)
+- **Mohammad Rauf** - *Development* - [Rauf](https://github.com/mohammadrauf0)
+- **Dania Ayad** - *Development* - [Dania](https://github.com/Cactuskiller)
+
 
 ## Technologies Used
 
