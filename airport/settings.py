@@ -94,7 +94,7 @@ DATABASES = {
     #     "ENGINE": "django.db.backends.mysql",
     #     "NAME": "tariqahmad$airportdb",
     #     "USER": "tariqahmad",
-    #     "PASSWORD": "Khankhan12345",
+    #     "PASSWORD": "Password@0",
     #     "HOST": "tariqahmad.mysql.pythonanywhere-services.com",
     #     "PORT": "",
     # }
